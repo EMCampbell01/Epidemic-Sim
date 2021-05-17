@@ -3,12 +3,11 @@ import random
 
 def run_simulation(bobs_list, home_list, workplace_list, virus):
 
-    simulation_running = True
-
     bob_list = bobs_list
     home_list = home_list
     workplace_list = workplace_list
     virus = virus
+    random_interations = 500
 
     # lists holding count of number of bobs in each state for each day
     healthy_count_list = []
@@ -21,6 +20,7 @@ def run_simulation(bobs_list, home_list, workplace_list, virus):
     bob_list[0].infected = True
     bob_list[0].day_infected = 0
 
+    simulation_running = True
     day = 0
 
     # iterates through days
@@ -69,7 +69,7 @@ def run_simulation(bobs_list, home_list, workplace_list, virus):
             for bob in bob_list:
                 if bob.home_id == infected_home.id:
                     if not bob.infected and not bob.immune and not bob.dead:
-                        if random.randint(0, 100) < virus.infectivity_home:
+                        if random.randint(0, 100) < virus.infectivity_indoors:
                             bob.infected = True
                             bob.recovered = False
                             bob.immune = False
@@ -89,12 +89,53 @@ def run_simulation(bobs_list, home_list, workplace_list, virus):
             for bob in bob_list:
                 if bob.work_id == infected_workplace.id:
                     if not bob.infected and not bob.immune and not bob.dead:
-                        if random.randint(0, 100) < virus.infectivity_work:
+                        if random.randint(0, 100) < virus.infectivity_indoors:
                             bob.infected = True
                             bob.recovered = False
                             bob.immune = False
                             bob.day_infected = day
         infected_homes.clear()
+
+        # Random Interactions
+        completed_interactions = 0
+        while completed_interactions < random_interations:
+
+            bob_1 = None
+            bob_2 = None
+
+            choosing_bob_1 = True
+            while choosing_bob_1:
+                bob_1 = random.choice(bobs_list)
+                if not bob_1.dead:
+                    choosing_bob_1 = False
+
+            choosing_bob_2 = True
+            while choosing_bob_2:
+                bob_2 = random.choice(bobs_list)
+                if not bob_2.dead:
+                    choosing_bob_2 = False
+
+            if bob_1.infected and not bob_1.immune:
+                if random.randint(0, 100) < virus.infectivity_outdoors:
+                    current_bob_id = bob_2.id
+                    for bob in bobs_list:
+                        if bob.id == current_bob_id:
+                            bob.infected = True
+                            bob.recovered = False
+                            bob.immune = False
+                            bob.day_infected = day
+
+            if bob_2.infected and not bob_2.immune:
+                if random.randint(0, 100) < virus.infectivity_outdoors:
+                    current_bob_id = bob_1.id
+                    for bob in bobs_list:
+                        if bob.id == current_bob_id:
+                            bob.infected = True
+                            bob.recovered = False
+                            bob.immune = False
+                            bob.day_infected = day
+
+            completed_interactions += 1
 
         # increments day and ends simulation at specified day
         day += 1
@@ -174,3 +215,4 @@ def run_simulation(bobs_list, home_list, workplace_list, virus):
             '''print("\nRECOVERED COUNT BY DAY - " + str(recovered_count_list))'''
 
             return [healthy_count_list, infected_count_list, immune_count_list, dead_count_list]
+

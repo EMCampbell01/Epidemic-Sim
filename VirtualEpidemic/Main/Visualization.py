@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 
-def visualization(data):
+def visualization(data, v_name):
 
     # Aesthetic attributes
     colours = ["green", "lime", "red", "black"]
@@ -9,8 +9,8 @@ def visualization(data):
     plt.style.use("fivethirtyeight")
 
     # Data presentation
-    plt.title("Simulated Transmission")
-    plt.legend()
+    plt.title("Simulated Transmission Of " + v_name)
+    #plt.legend("Test")
     labels = ["Healthy", "Immune", "Infected", "dead"]
     plt.xlabel("Days")
     plt.ylabel("Population")
@@ -18,3 +18,19 @@ def visualization(data):
     # Construct and display stack graph
     plt.stackplot(range(365), data[0], data[2], data[1], data[3], labels=labels, colors=colours)
     plt.show()
+
+def startup():
+
+    print("")
+    print("|]   [|   [][|][]    [][][]|   [][|][]   []   []    []|[]    []")
+    print("|]   [|     [|]      []   [|     [|]     []   []   []   []   []")
+    print("[]   []     [|]      [][]]       [|]     []   []   [][|][]   []")
+    print(" [] []      [|]      []  []      [|]     []   []   []   []   []")
+    print("  [|]     [][|][]    []   [|     [|]     [][|][]   []   []   [][][]| ")
+    print("")
+    print("|[][][]   |[][][]   [][|][]   [][]|     |[][][]   []\   /[]   [][|][]   |[][][]")
+    print("|]        |]   []     [|]     []|  []   |]        [] \ / []     [|]     |] ")
+    print("|[][][]   |[][][]     [|]     []|  []   |[][][]   []  '  []     [|]     |]")
+    print("|]        |]          [|]     []|  []   |]        []     []     [|]     |]")
+    print("|[][][]   |]        [][|][]   [][]|     |[][][]   []     []   [][|][]   |[][][]")
+    print("")

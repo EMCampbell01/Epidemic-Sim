@@ -23,13 +23,13 @@ class Bob():
 # The pathogen contains all of the specific attributes for the simulated epidemic
 class Pathogen():
 
-    def __init__(self, name, infectivity_home, infectivity_work, v_duration, i_duration, mortality):
-        self.name = name                          # Name of the pathogen
-        self.infectivity_home = infectivity_home  # % chance of infection on exposure at home
-        self.infectivity_work = infectivity_work  # % chance of infection on exposure at work
-        self.v_duration = v_duration              # duration of time which an individual remains infected/infectious
-        self.i_duration = i_duration              # duration of time which an individual remains immune
-        self.mortality = mortality                # % chance of dying from infection
+    def __init__(self, name, infectivity_indoors, infectivity_outdoors, v_duration, i_duration, mortality):
+        self.name = name                                  # Name of the pathogen
+        self.infectivity_indoors = infectivity_indoors    # % chance of infection on exposure at home
+        self.infectivity_outdoors = infectivity_outdoors  # % chance of infection on exposure at work
+        self.v_duration = v_duration                      # duration of time which an individual remains infected/infectious
+        self.i_duration = i_duration                      # duration of time which an individual remains immune
+        self.mortality = mortality                        # % chance of dying from infection
 
 
 class Household():
