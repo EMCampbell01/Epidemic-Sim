@@ -14,30 +14,34 @@ World and pathogen attributes are customizable. (Can result in error with invali
 
 Customizable attribues include:
 
-Population              Total number of pops
+Population =             Total number of pops
 
-Home Count              Number of homes
+Home Count  =            Number of homes
 
-Work Count              Number of workplaces
+Work Count =             Number of workplaces
 
-Home Size               Number of pops assigned to each home
+Home Size   =            Number of pops assigned to each home
 
-Work Size               Number of pops assigned to each workplace
+Work Size   =            Number of pops assigned to each workplace
 
-Pathogen                Name Name of the pathogen
+Pathogen   =             Name Name of the pathogen
 
-Indoor Infectivity      % chance of infecting pops within a shared home or workplace
+Indoor Infectivity  =    % chance of infecting pops within a shared home or workplace
 
-Outdoor Infectivity     % chance of infecting pops in random interactions
+Outdoor Infectivity  =   % chance of infecting pops in random interactions
 
-Infection Duration      Number of days a pop remains infected
+Infection Duration   =   Number of days a pop remains infected
 
-Immunity duration       Number of days a pop remains immune infected duration
+Immunity duration   =    Number of days a pop remains immune infected duration
 
-Mortality               % chance of pop dying after infected duration
+Mortality      =         % chance of pop dying after infected duration
 
 Two graphs are generated with the produced data.
 
-Firstly a stack graph showing the proportion of the population in diffrent health states over time (GREEN=HEALTHY, RED=INFECTED, LIME=IMMUNE, BLACK=DEAD)
+Firstly a stack graph showing the proportion of the population in diffrent health states over time 
+
+(GREEN=HEALTHY, RED=INFECTED, LIME=IMMUNE, BLACK=DEAD)
 
 Additionally a line graph showing the number of infected and dead over time
+
+
